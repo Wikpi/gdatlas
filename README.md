@@ -1,0 +1,1 @@
+gdAtlas - a tool meant to help developers understand their Godot codebase.
