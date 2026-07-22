@@ -1,4 +1,4 @@
-.PHONY: build install test help clean-cache lint test venv
+.PHONY: build install test help clean-cache lint format format-check venv
 
 VENV := .venv
 PYTHON := $(VENV)/bin/python
@@ -8,9 +8,6 @@ build:
 	@echo "Building package..."
 	@$(PYTHON) -m build
 
-lint:
-	@echo "No current lints available."
-
 install:
 	@if [ ! -d "$(VENV)" ]; then \
 		echo "Creating virtual environment..."; \
@@ -18,11 +15,23 @@ install:
 	fi
 
 	@echo "Installing package in editable mode..."
-	@$(PIP) install -e .
+	@$(PIP) install -e ".[dev]"
 
 test:
 	@echo "Running tests..."
 	@$(PYTHON) -m pytest
+
+lint:
+	@echo "Running linter..."
+	@$(PYTHON) -m ruff check .
+
+format-check:
+	@echo "Checking code formatting..."
+	@$(PYTHON) -m ruff format --check .
+
+format:
+	@echo "Formatting code..."
+	@$(PYTHON) -m ruff format .
 
 clean-cache:
 	@echo "Cleaning package cache..."
