@@ -19,6 +19,11 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = []
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
 
 [project.urls]
 Homepage = "https://github.com/Wikpi/gdatlas"

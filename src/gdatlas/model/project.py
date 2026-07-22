@@ -4,6 +4,7 @@ from pathlib import Path
 from .script import Script
 from .scene import Scene
 
+
 @dataclass
 class Project:
     path: Path

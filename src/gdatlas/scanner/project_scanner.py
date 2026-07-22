@@ -10,43 +10,40 @@ IGNORED_DIRECTORIES = {
     ".import",
 }
 
+
 def scan_project(project_path: Path) -> Project:
     if not is_valid_project(project_path):
         raise ValueError(f"Invalid Godot project path: {project_path}")
-    
+
     scripts: list[Script] = []
     scenes: list[Scene] = []
 
     for file in project_path.rglob("*"):
         if is_ignored_file(file):
             continue
-        
+
         relative_path: Path = file.relative_to(project_path)
 
         if is_script(file):
-            scripts.append(
-                Script(path=relative_path)
-            )
-        
-        elif is_scene(file):
-            scenes.append(
-                Scene(path=relative_path)
-            )
+            scripts.append(Script(path=relative_path))
 
-    return Project(
-        path=project_path, 
-        scripts=scripts, 
-        scenes=scenes
-    )
+        elif is_scene(file):
+            scenes.append(Scene(path=relative_path))
+
+    return Project(path=project_path, scripts=scripts, scenes=scenes)
+
 
 def is_ignored_file(path: Path) -> bool:
     return any(part in IGNORED_DIRECTORIES for part in path.parts)
 
+
 def is_script(path: Path) -> bool:
     return path.suffix == ".gd"
 
+
 def is_scene(path: Path) -> bool:
     return path.suffix == ".tscn"
+
 
 def is_valid_project(path: Path) -> bool:
     return path.is_dir() and (path / "project.godot").exists()
