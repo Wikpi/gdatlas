@@ -3,10 +3,11 @@
 VENV := .venv
 PYTHON := $(VENV)/bin/python
 PIP := $(VENV)/bin/pip
+PROJECT_DIR ?= .
 
 build:
 	@echo "Building package..."
-	@$(PYTHON) -m build
+	@$(PYTHON) -m build $(PROJECT_DIR)
 
 install:
 	@if [ ! -d "$(VENV)" ]; then \
@@ -19,19 +20,19 @@ install:
 
 test:
 	@echo "Running tests..."
-	@$(PYTHON) -m pytest
+	@$(PYTHON) -m pytest $(PROJECT_DIR)
 
 lint:
 	@echo "Running linter..."
-	@$(PYTHON) -m ruff check .
+	@$(PYTHON) -m ruff check $(PROJECT_DIR)
 
 format-check:
 	@echo "Checking code formatting..."
-	@$(PYTHON) -m ruff format --check .
+	@$(PYTHON) -m ruff format --check $(PROJECT_DIR)
 
 format:
 	@echo "Formatting code..."
-	@$(PYTHON) -m ruff format .
+	@$(PYTHON) -m ruff format $(PROJECT_DIR)
 
 clean-cache:
 	@echo "Cleaning package cache..."
