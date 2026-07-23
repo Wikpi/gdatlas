@@ -1,17 +1,15 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from .script import Script
 from .scene import Scene
 
 
-@dataclass
+@dataclass(slots=True)
 class Project:
     path: Path
-    scripts: list[Script]
-    scenes: list[Scene]
 
-    def __init__(self, path: Path, scripts: list[Script], scenes: list[Scene]) -> None:
-        self.path = path
-        self.scripts = scripts
-        self.scenes = scenes
+    godot_version: str
+
+    scripts: list[Script] = field(default_factory=list)
+    scenes: list[Scene] = field(default_factory=list)

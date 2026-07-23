@@ -1,7 +1,6 @@
 from dataclasses import dataclass
-from pathlib import Path
-
 
 @dataclass(slots=True)
-class Scene:
-    path: Path
+class ScriptElement:
+    name: str
+    line_number: int

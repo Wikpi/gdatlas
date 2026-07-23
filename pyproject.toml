@@ -25,6 +25,9 @@ dev = [
     "ruff",
 ]
 
+[project.scripts]
+gdatlas = "gdatlas.__main__:main"
+
 [project.urls]
 Homepage = "https://github.com/Wikpi/gdatlas"
 Issues = "https://github.com/Wikpi/gdatlas/issues"
