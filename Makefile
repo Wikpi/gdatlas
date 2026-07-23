@@ -24,6 +24,9 @@ install:
 	@echo "Installing package in editable mode..."
 	@$(PIP) install -e ".[dev]"
 
+	@echo "Setting up pre-commit..."
+	pre-commit install
+
 test:
 	@echo "Running tests..."
 	@$(PYTHON) -m pytest -v $(PROJECT_DIR)
