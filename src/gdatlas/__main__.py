@@ -4,22 +4,25 @@ from pathlib import Path
 
 from gdatlas.scanner import scan_project
 from gdatlas.parser import parse_project
+from gdatlas.model import Script
+
 
 def main() -> None:
     project_path = Path(sys.argv[1])
-    
+
     print("===================== Scanning Project ============================")
     project = scan_project(project_path)
 
     print(f"Project path: {project.path}")
     print(f"Scripts: {len(project.scripts)}")
     print(f"Scenes: {len(project.scenes)}")
-    
+
     print("===================== Parsing Project (scripts) ============================")
     parse_project(project)
 
     for script in project.scripts:
         print_script(script)
+
 
 def print_script(script: Script) -> None:
     print()
@@ -27,7 +30,7 @@ def print_script(script: Script) -> None:
 
     print(f" - Metadata: {len(script.metadata)}")
     for metadata in script.metadata:
-        if metadata.value != None:
+        if metadata.value:
             print(f" - - Property: \t{metadata.name}: {metadata.value};")
         else:
             print(f" - - Property: \t{metadata.name}")
@@ -55,11 +58,11 @@ def print_script(script: Script) -> None:
         if variable.default_value:
             print(f" - - - Default Value: \t{variable.default_value};")
         if variable.static:
-            print(f" - - - Static: \ttrue;")
+            print(" - - - Static: \ttrue;")
         if variable.onready:
-            print(f" - - - Onready: \ttrue;")
+            print(" - - - Onready: \ttrue;")
         if variable.export:
-            print(f" - - - Export: \ttrue;")
+            print(" - - - Export: \ttrue;")
 
     print(f" - Signals: {len(script.signals)}")
     for signal in script.signals:
@@ -69,6 +72,7 @@ def print_script(script: Script) -> None:
             print(f" - - - - Name: \t{parameter.name};")
             print(f" - - - - - Type Hint: \t{parameter.type_hint};")
             print(f" - - - - - Default Value: \t{parameter.default_value};")
+
 
 if __name__ == "__main__":
     main()

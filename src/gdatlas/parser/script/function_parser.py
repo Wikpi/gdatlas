@@ -2,6 +2,7 @@ from gdatlas.model.script_elements import Function
 
 from .parameter_parser import parse_parameter
 
+
 def parse_function(line: str, line_number: int) -> Function | None:
     is_static = False
     if line.startswith("static "):
@@ -46,5 +47,5 @@ def parse_function(line: str, line_number: int) -> Function | None:
         parameters=parameters,
         return_type=return_type,
         line_number=line_number,
-        static=is_static
+        static=is_static,
     )

@@ -4,6 +4,7 @@ from gdatlas.parser.script import parse_enum
 
 from gdatlas.model.script_elements import Enum, EnumMember
 
+
 @pytest.mark.parametrize(
     "line, line_number, expected",
     [
@@ -43,14 +44,14 @@ from gdatlas.model.script_elements import Enum, EnumMember
             ),
         ),
         (
-            "enum", 
-            4, 
-            None
+            "enum",
+            4,
+            None,
         ),
         (
-            "enum ", 
-            5, 
-            None
+            "enum ",
+            5,
+            None,
         ),
     ],
 )

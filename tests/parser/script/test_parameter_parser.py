@@ -4,6 +4,7 @@ from gdatlas.parser.script import parse_parameter
 
 from gdatlas.model.script_elements import Parameter
 
+
 @pytest.mark.parametrize(
     "parameter, expected",
     [
@@ -65,7 +66,7 @@ from gdatlas.model.script_elements import Parameter
         ),
         (
             "",
-            None
+            None,
         ),
         (
             "var ",

@@ -4,6 +4,7 @@ from gdatlas.parser.script import parse_extends
 
 from gdatlas.model.script_elements import Metadata
 
+
 @pytest.mark.parametrize(
     "line, line_number, expected",
     [
@@ -31,8 +32,8 @@ from gdatlas.model.script_elements import Metadata
             None,
         ),
         (
-            "extends ", 
-            4, 
+            "extends ",
+            4,
             None,
         ),
     ],

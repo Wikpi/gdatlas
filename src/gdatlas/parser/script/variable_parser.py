@@ -1,5 +1,6 @@
 from gdatlas.model.script_elements import Variable
 
+
 def parse_variable(line: str, line_number: int) -> Variable | None:
     is_onready = False
     is_export = False
@@ -29,7 +30,7 @@ def parse_variable(line: str, line_number: int) -> Variable | None:
 
         else:
             break
-    
+
     prefix: str = "var "
     if not line.startswith(prefix):
         return None
@@ -37,13 +38,13 @@ def parse_variable(line: str, line_number: int) -> Variable | None:
     signature = line.removeprefix(prefix).strip()
 
     parts = signature.split("=", maxsplit=1)
-    
+
     value = None
     if len(parts) >= 2:
         value = parts[1].strip()
 
     parts = parts[0].split(":", maxsplit=1)
-    
+
     type_hint = None
     if len(parts) >= 2:
         type_hint = parts[1].strip()
@@ -60,5 +61,5 @@ def parse_variable(line: str, line_number: int) -> Variable | None:
         static=is_static,
         export=is_export,
         onready=is_onready,
-        line_number=line_number
+        line_number=line_number,
     )
