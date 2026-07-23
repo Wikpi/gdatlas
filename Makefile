@@ -1,9 +1,15 @@
 .PHONY: build install test help clean-cache lint format format-check venv
 
+PACKAGE := gdatlas
+
 VENV := .venv
 PYTHON := $(VENV)/bin/python
 PIP := $(VENV)/bin/pip
 PROJECT_DIR ?= .
+
+run:
+	@echo "Running package..."
+	@$(PYTHON) -m $(PACKAGE) $(PROJECT_DIR) $(ARGS)
 
 build:
 	@echo "Building package..."
@@ -20,7 +26,7 @@ install:
 
 test:
 	@echo "Running tests..."
-	@$(PYTHON) -m pytest $(PROJECT_DIR)
+	@$(PYTHON) -m pytest -v $(PROJECT_DIR)
 
 lint:
 	@echo "Running linter..."

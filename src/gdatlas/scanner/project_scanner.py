@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from gdatlas.model.project import Project
-from gdatlas.model.script import Script
-from gdatlas.model.scene import Scene
+from gdatlas.model import Project
+from gdatlas.model import Script
+from gdatlas.model import Scene
 
 IGNORED_DIRECTORIES = {
     ".git",
@@ -22,15 +22,17 @@ def scan_project(project_path: Path) -> Project:
         if is_ignored_file(file):
             continue
 
-        relative_path: Path = file.relative_to(project_path)
+        # relative_path: Path = file.relative_to(project_path)
+        script_path: Path = file.resolve()
 
         if is_script(file):
-            scripts.append(Script(path=relative_path))
+            scripts.append(Script(path=script_path))
 
         elif is_scene(file):
-            scenes.append(Scene(path=relative_path))
+            scenes.append(Scene(path=script_path))
 
-    return Project(path=project_path, scripts=scripts, scenes=scenes)
+    # TODO: remove hardcoded version.
+    return Project(path=project_path, godot_version="3", scripts=scripts, scenes=scenes)
 
 
 def is_ignored_file(path: Path) -> bool:
