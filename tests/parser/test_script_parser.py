@@ -7,6 +7,7 @@ from gdatlas.model import Script
 
 from gdatlas.parser.common import ParseContext
 
+
 @pytest.mark.parametrize(
     "project_name, script_path, expected_functions, expected_variables",
     [

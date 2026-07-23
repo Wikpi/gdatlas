@@ -1,3 +1,3 @@
-from .project import Project
-from .scene import Scene
-from .script import Script
+from .project import Project as Project
+from .scene import Scene as Scene
+from .script import Script as Script

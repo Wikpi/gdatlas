@@ -4,43 +4,44 @@ from gdatlas.parser.script import parse_constant
 
 from gdatlas.model.script_elements import Constant
 
+
 @pytest.mark.parametrize(
     "line, line_number, expected",
     [
         (
-            "const TEST_NAME: String = 'test_value'", 
-            1, 
+            "const TEST_NAME: String = 'test_value'",
+            1,
             Constant(
-                name="TEST_NAME", 
-                value="'test_value'", 
-                type_hint="String", 
-                line_number=1
-            )
+                name="TEST_NAME",
+                value="'test_value'",
+                type_hint="String",
+                line_number=1,
+            ),
         ),
         (
-            "const TEST_NAME = 'test_value'", 
-            2, 
+            "const TEST_NAME = 'test_value'",
+            2,
             Constant(
-                name="TEST_NAME", 
-                value="'test_value'", 
-                type_hint=None, 
-                line_number=2
-            )
+                name="TEST_NAME",
+                value="'test_value'",
+                type_hint=None,
+                line_number=2,
+            ),
         ),
         (
-            "const test_name", 
-            3, 
-            None
+            "const test_name",
+            3,
+            None,
         ),
         (
-            "const ", 
-            4, 
-            None
+            "const ",
+            4,
+            None,
         ),
         (
-            "const", 
-            5, 
-            None
+            "const",
+            5,
+            None,
         ),
     ],
 )

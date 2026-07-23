@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 
 from .script_element import ScriptElement
+from .parameter import Parameter
+
 
 @dataclass(slots=True)
 class Function(ScriptElement):

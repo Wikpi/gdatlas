@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from .script_element import ScriptElement
 
+
 @dataclass(slots=True)
 class Variable(ScriptElement):
     default_value: str | None = None

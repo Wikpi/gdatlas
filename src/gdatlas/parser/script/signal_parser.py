@@ -2,6 +2,7 @@ from gdatlas.model.script_elements import Signal
 
 from .parameter_parser import parse_parameter
 
+
 def parse_signal(line: str, line_number: int) -> Signal | None:
     prefix: str = "signal "
     if not line.startswith(prefix):
@@ -30,11 +31,11 @@ def parse_signal(line: str, line_number: int) -> Signal | None:
                 parsed_parameter = parse_parameter(parameter.strip())
                 if not parsed_parameter:
                     continue
-                    
+
                 parameters.append(parsed_parameter)
 
     return Signal(
         name=name,
         parameters=parameters,
-        line_number=line_number
+        line_number=line_number,
     )

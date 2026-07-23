@@ -4,6 +4,7 @@ from gdatlas.parser.script import parse_variable
 
 from gdatlas.model.script_elements import Variable
 
+
 @pytest.mark.parametrize(
     "line, line_number, expected",
     [

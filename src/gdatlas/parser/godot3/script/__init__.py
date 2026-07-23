@@ -1,1 +1,1 @@
-from .dispatcher import PARSERS
+from .dispatcher import PARSERS as PARSERS
