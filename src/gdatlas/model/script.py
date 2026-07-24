@@ -2,12 +2,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from gdatlas.model.script_elements import (
-    Function,
-    Variable,
     Constant,
-    Signal,
     Enum,
+    Function,
     Metadata,
+    Signal,
+    Variable,
 )
 
 

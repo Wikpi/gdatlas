@@ -1,8 +1,6 @@
 from pathlib import Path
 
-from gdatlas.model import Project
-from gdatlas.model import Script
-from gdatlas.model import Scene
+from gdatlas.model import Project, Scene, Script
 
 IGNORED_DIRECTORIES = {
     ".git",

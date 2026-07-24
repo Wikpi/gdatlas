@@ -1,17 +1,16 @@
-from .common import ParseRule, ParseContext
-
 from gdatlas.model import Script
 from gdatlas.model.script_elements import (
-    ScriptElement,
-    Function,
-    Variable,
     Constant,
-    Signal,
     Enum,
+    Function,
     Metadata,
+    ScriptElement,
+    Signal,
+    Variable,
 )
-
 from gdatlas.parser.godot3.script import PARSERS as GODOT3_PARSERS
+
+from .common import ParseContext, ParseRule
 
 
 def parse_script(ctx: ParseContext, script: Script) -> None:

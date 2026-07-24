@@ -31,9 +31,13 @@ test:
 	@echo "Running tests..."
 	@$(PYTHON) -m pytest -v $(PROJECT_DIR)
 
+lint-check:
+	@echo "Checking linter..."
+	@$(PYTHON) -m ruff check $(PROJECT_DIR)
+
 lint:
 	@echo "Running linter..."
-	@$(PYTHON) -m ruff check $(PROJECT_DIR)
+	@$(PYTHON) -m ruff check --fix $(PROJECT_DIR)
 
 format-check:
 	@echo "Checking code formatting..."

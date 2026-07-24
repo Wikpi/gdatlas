@@ -1,10 +1,9 @@
-import pytest
-
 from pathlib import Path
 
-from gdatlas.parser import parse_script
-from gdatlas.model import Script
+import pytest
 
+from gdatlas.model import Script
+from gdatlas.parser import parse_script
 from gdatlas.parser.common import ParseContext
 
 

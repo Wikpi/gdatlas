@@ -1,9 +1,9 @@
-from .function_parser import parse_function as parse_function
-from .variable_parser import parse_variable as parse_variable
-from .constant_parser import parse_constant as parse_constant
-from .signal_parser import parse_signal as parse_signal
-from .enum_parser import parse_enum as parse_enum
-from .parameter_parser import parse_parameter as parse_parameter
-from .extends_parser import parse_extends as parse_extends
 from .class_name_parser import parse_class_name as parse_class_name
+from .constant_parser import parse_constant as parse_constant
+from .enum_parser import parse_enum as parse_enum
+from .extends_parser import parse_extends as parse_extends
+from .function_parser import parse_function as parse_function
+from .parameter_parser import parse_parameter as parse_parameter
+from .signal_parser import parse_signal as parse_signal
 from .tool_parser import parse_tool as parse_tool
+from .variable_parser import parse_variable as parse_variable
