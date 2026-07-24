@@ -1,10 +1,9 @@
 import sys
-
 from pathlib import Path
 
-from gdatlas.scanner import scan_project
-from gdatlas.parser import parse_project
 from gdatlas.model import Script
+from gdatlas.parser import parse_project
+from gdatlas.scanner import scan_project
 
 
 def main() -> None:

@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .script import Script
 from .scene import Scene
+from .script import Script
 
 
 @dataclass(slots=True)

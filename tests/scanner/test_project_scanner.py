@@ -1,6 +1,6 @@
-import pytest
-
 from pathlib import Path
+
+import pytest
 
 from gdatlas.scanner.project_scanner import scan_project
 

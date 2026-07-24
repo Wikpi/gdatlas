@@ -1,8 +1,7 @@
 import pytest
 
-from gdatlas.parser.script import parse_enum
-
 from gdatlas.model.script_elements import Enum, EnumMember
+from gdatlas.parser.script import parse_enum
 
 
 @pytest.mark.parametrize(

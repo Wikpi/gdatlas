@@ -1,7 +1,7 @@
+from gdatlas.model import Project
+
 from .common import ParseContext
 from .script_parser import parse_script
-
-from gdatlas.model import Project
 
 
 def parse_project(project: Project) -> None:

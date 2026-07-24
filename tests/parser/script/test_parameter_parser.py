@@ -1,8 +1,7 @@
 import pytest
 
-from gdatlas.parser.script import parse_parameter
-
 from gdatlas.model.script_elements import Parameter
+from gdatlas.parser.script import parse_parameter
 
 
 @pytest.mark.parametrize(

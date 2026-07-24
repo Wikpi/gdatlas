@@ -1,13 +1,14 @@
 from gdatlas.parser.common import ParseRule
-
-from gdatlas.parser.script import parse_function
-from gdatlas.parser.script import parse_variable
-from gdatlas.parser.script import parse_constant
-from gdatlas.parser.script import parse_signal
-from gdatlas.parser.script import parse_enum
-from gdatlas.parser.script import parse_extends
-from gdatlas.parser.script import parse_class_name
-from gdatlas.parser.script import parse_tool
+from gdatlas.parser.script import (
+    parse_class_name,
+    parse_constant,
+    parse_enum,
+    parse_extends,
+    parse_function,
+    parse_signal,
+    parse_tool,
+    parse_variable,
+)
 
 PARSERS: list[ParseRule] = [
     ParseRule("static func ", parse_function),
