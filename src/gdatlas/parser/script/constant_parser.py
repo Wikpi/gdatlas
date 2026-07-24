@@ -1,4 +1,4 @@
-from gdatlas.model.script_elements import Constant
+from gdatlas.model.script.elements import Constant
 
 
 def parse_constant(line: str, line_number: int) -> Constant | None:

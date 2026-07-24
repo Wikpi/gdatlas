@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script_elements import Parameter, Signal
+from gdatlas.model.script.elements import Parameter, Signal
 from gdatlas.parser.script import parse_signal
 
 

@@ -3,6 +3,7 @@ from .constant_parser import parse_constant as parse_constant
 from .enum_parser import parse_enum as parse_enum
 from .extends_parser import parse_extends as parse_extends
 from .function_parser import parse_function as parse_function
+from .inner_class_parser import parse_inner_class as parse_inner_class
 from .parameter_parser import parse_parameter as parse_parameter
 from .signal_parser import parse_signal as parse_signal
 from .tool_parser import parse_tool as parse_tool

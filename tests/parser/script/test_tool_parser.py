@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script_elements import Metadata
+from gdatlas.model.script.metadata import ScriptMetadata
 from gdatlas.parser.script import parse_tool
 
 
@@ -10,7 +10,7 @@ from gdatlas.parser.script import parse_tool
         (
             "tool",
             1,
-            Metadata(
+            ScriptMetadata(
                 name="tool",
                 value=None,
                 line_number=1,
@@ -19,7 +19,7 @@ from gdatlas.parser.script import parse_tool
         (
             "tool ",
             2,
-            Metadata(
+            ScriptMetadata(
                 name="tool",
                 value=None,
                 line_number=2,
@@ -32,7 +32,7 @@ from gdatlas.parser.script import parse_tool
         ),
     ],
 )
-def test_parse_tool(line: str, line_number: int, expected: Metadata) -> None:
+def test_parse_tool(line: str, line_number: int, expected: ScriptMetadata) -> None:
     element = parse_tool(line, line_number)
 
     assert element == expected

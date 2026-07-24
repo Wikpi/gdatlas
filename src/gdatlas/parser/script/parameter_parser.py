@@ -1,4 +1,4 @@
-from gdatlas.model.script_elements import Parameter
+from gdatlas.model.script.elements import Parameter
 
 
 def parse_parameter(parameter: str) -> Parameter | None:

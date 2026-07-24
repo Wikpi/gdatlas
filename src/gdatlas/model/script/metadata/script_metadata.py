@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from .script_element import ScriptElement
+from ..common import ScriptNode
 
 
 @dataclass(slots=True)
-class Metadata(ScriptElement):
+class ScriptMetadata(ScriptNode):
     value: str | None = None

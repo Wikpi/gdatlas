@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from gdatlas.model import Script
+from gdatlas.model.script.elements import Function, Variable
 from gdatlas.parser import parse_script
 from gdatlas.parser.common import ParseContext
 
@@ -30,5 +31,14 @@ def test_parse_script(
 
     parse_script(ctx, script)
 
-    assert len(script.functions) == expected_functions
-    assert len(script.variables) == expected_variables
+    function_count: int = 0
+    variable_count: int = 0
+
+    for node in script.elements:
+        if isinstance(node, Function):
+            function_count += 1
+        elif isinstance(node, Variable):
+            variable_count += 1
+
+    assert function_count == expected_functions
+    assert variable_count == expected_variables

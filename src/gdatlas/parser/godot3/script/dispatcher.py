@@ -5,6 +5,7 @@ from gdatlas.parser.script import (
     parse_enum,
     parse_extends,
     parse_function,
+    parse_inner_class,
     parse_signal,
     parse_tool,
     parse_variable,
@@ -23,4 +24,5 @@ PARSERS: list[ParseRule] = [
     ParseRule("extends ", parse_extends),
     ParseRule("class_name ", parse_class_name),
     ParseRule("tool", parse_tool),
+    ParseRule("class ", parse_inner_class),
 ]

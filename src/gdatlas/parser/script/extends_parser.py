@@ -1,7 +1,7 @@
-from gdatlas.model.script_elements import Metadata
+from gdatlas.model.script.metadata import ScriptMetadata
 
 
-def parse_extends(line: str, line_number: int) -> Metadata | None:
+def parse_extends(line: str, line_number: int) -> ScriptMetadata | None:
     prefix: str = "extends "
     if not line.startswith(prefix):
         return None
@@ -12,7 +12,7 @@ def parse_extends(line: str, line_number: int) -> Metadata | None:
     if not value:
         return None
 
-    return Metadata(
+    return ScriptMetadata(
         name="extends",
         value=value,
         line_number=line_number,

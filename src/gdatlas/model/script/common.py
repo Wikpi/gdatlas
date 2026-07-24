@@ -2,6 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass(slots=True)
-class ScriptElement:
+class ScriptNode:
     name: str
     line_number: int

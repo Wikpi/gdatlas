@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script_elements import Constant
+from gdatlas.model.script.elements import Constant
 from gdatlas.parser.script import parse_constant
 
 
