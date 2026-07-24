@@ -38,6 +38,10 @@ jobs:
           files: |
             **/*.py
 
+      - name: Ruff version
+        run:
+          ruff --version
+
       # --- Blocking: changed Python files ---
       - name: Lint (changed files)
         if: steps.changed-files.outputs.any_changed == 'true'

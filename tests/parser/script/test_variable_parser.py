@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script_elements import Variable
+from gdatlas.model.script.elements import Variable
 from gdatlas.parser.script import parse_variable
 
 

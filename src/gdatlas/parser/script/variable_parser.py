@@ -1,4 +1,4 @@
-from gdatlas.model.script_elements import Variable
+from gdatlas.model.script.elements import Variable
 
 
 def parse_variable(line: str, line_number: int) -> Variable | None:

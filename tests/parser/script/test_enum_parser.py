@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script_elements import Enum, EnumMember
+from gdatlas.model.script.elements import Enum, EnumMember
 from gdatlas.parser.script import parse_enum
 
 

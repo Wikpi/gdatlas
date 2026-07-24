@@ -2,7 +2,7 @@ from .constant import Constant as Constant
 from .enum import Enum as Enum
 from .enum import EnumMember as EnumMember
 from .function import Function as Function
-from .metadata import Metadata as Metadata
+from .inner_class import Class as Class
 from .parameter import Parameter as Parameter
 from .script_element import ScriptElement as ScriptElement
 from .signal import Signal as Signal

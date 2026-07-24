@@ -1,4 +1,4 @@
-from gdatlas.model.script_elements import Function
+from gdatlas.model.script.elements import Function
 
 from .parameter_parser import parse_parameter
 

@@ -1,4 +1,4 @@
-from gdatlas.model.script_elements import Signal
+from gdatlas.model.script.elements import Signal
 
 from .parameter_parser import parse_parameter
 

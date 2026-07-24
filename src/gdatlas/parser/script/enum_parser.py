@@ -1,4 +1,4 @@
-from gdatlas.model.script_elements import Enum, EnumMember
+from gdatlas.model.script.elements import Enum, EnumMember
 
 
 def parse_enum(line: str, line_number: int) -> Enum | None:

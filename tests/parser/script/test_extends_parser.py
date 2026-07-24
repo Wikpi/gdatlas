@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script_elements import Metadata
+from gdatlas.model.script.metadata import ScriptMetadata
 from gdatlas.parser.script import parse_extends
 
 
@@ -10,7 +10,7 @@ from gdatlas.parser.script import parse_extends
         (
             "extends Test",
             1,
-            Metadata(
+            ScriptMetadata(
                 name="extends",
                 value="Test",
                 line_number=1,
@@ -19,7 +19,7 @@ from gdatlas.parser.script import parse_extends
         (
             "extends 'project/test/directory/test.gd'",
             2,
-            Metadata(
+            ScriptMetadata(
                 name="extends",
                 value="'project/test/directory/test.gd'",
                 line_number=2,
@@ -37,7 +37,7 @@ from gdatlas.parser.script import parse_extends
         ),
     ],
 )
-def test_parse_extends(line: str, line_number: int, expected: Metadata) -> None:
+def test_parse_extends(line: str, line_number: int, expected: ScriptMetadata) -> None:
     element = parse_extends(line, line_number)
 
     assert element == expected
