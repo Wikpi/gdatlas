@@ -18,14 +18,14 @@ from gdatlas.model.script.metadata import ScriptMetadata
         (
             [
                 Variable(
-                    name="health",
+                    name="test_var",
                     line_number=1,
                 ),
             ],
             Variable,
             [
                 Variable(
-                    name="health",
+                    name="test_var",
                     line_number=1,
                 ),
             ],
@@ -33,18 +33,18 @@ from gdatlas.model.script.metadata import ScriptMetadata
         (
             [
                 Variable(
-                    name="health",
+                    name="test_var",
                     line_number=1,
                 ),
                 Function(
-                    name="ready",
+                    name="test_func",
                     line_number=2,
                 ),
             ],
             Function,
             [
                 Function(
-                    name="ready",
+                    name="test_func",
                     line_number=2,
                 ),
             ],
@@ -52,7 +52,7 @@ from gdatlas.model.script.metadata import ScriptMetadata
         (
             [
                 Variable(
-                    name="health",
+                    name="test_var",
                     line_number=1,
                 ),
             ],
@@ -80,14 +80,14 @@ def test_get_elements(elements: list, target_type: type, expected: list) -> None
             [
                 ScriptMetadata(
                     name="class_name",
-                    value="Player",
+                    value="test",
                     line_number=1,
                 ),
             ],
             "class_name",
             ScriptMetadata(
                 name="class_name",
-                value="Player",
+                value="test",
                 line_number=1,
             ),
         ),
@@ -95,7 +95,7 @@ def test_get_elements(elements: list, target_type: type, expected: list) -> None
             [
                 ScriptMetadata(
                     name="class_name",
-                    value="Player",
+                    value="test",
                     line_number=1,
                 ),
             ],
@@ -106,7 +106,7 @@ def test_get_elements(elements: list, target_type: type, expected: list) -> None
             [
                 ScriptMetadata(
                     name="class_name",
-                    value="Player",
+                    value="test",
                     line_number=1,
                 ),
                 ScriptMetadata(

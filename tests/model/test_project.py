@@ -10,29 +10,29 @@ from gdatlas.model import Project, Script
     [
         (
             [],
-            Path("player.gd"),
+            Path("test.gd"),
             None,
         ),
         (
             [
-                Script(path=Path("player.gd")),
+                Script(path=Path("test.gd")),
             ],
-            Path("player.gd"),
-            Script(path=Path("player.gd")),
+            Path("test.gd"),
+            Script(path=Path("test.gd")),
         ),
         (
             [
-                Script(path=Path("player.gd")),
-                Script(path=Path("enemy.gd")),
+                Script(path=Path("testA.gd")),
+                Script(path=Path("testB.gd")),
             ],
-            Path("enemy.gd"),
-            Script(path=Path("enemy.gd")),
+            Path("testB.gd"),
+            Script(path=Path("testB.gd")),
         ),
         (
             [
-                Script(path=Path("player.gd")),
+                Script(path=Path("testA.gd")),
             ],
-            Path("enemy.gd"),
+            Path("testB.gd"),
             None,
         ),
     ],
