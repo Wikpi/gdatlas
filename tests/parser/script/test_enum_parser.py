@@ -1,161 +1,60 @@
-from pathlib import Path
-
 import pytest
 
-from gdatlas.model.script import Script
-from gdatlas.model.script.elements import Class, Function, Variable
-from gdatlas.model.script.metadata import ScriptMetadata
+from gdatlas.model.script.elements import Enum, EnumMember
+from gdatlas.parser.script import parse_enum
 
 
 @pytest.mark.parametrize(
-    "elements, target_type, expected",
+    "line, line_number, expected",
     [
         (
-            [
-                Variable(
-                    name="health",
-                    line_number=1,
-                ),
-                Function(
-                    name="_ready",
-                    line_number=2,
-                ),
-                Class(
-                    name="PlayerState",
-                    line_number=3,
-                ),
-            ],
-            Variable,
-            [
-                Variable(
-                    name="health",
-                    line_number=1,
-                ),
-            ],
-        ),
-        (
-            [
-                Variable(
-                    name="health",
-                    line_number=1,
-                ),
-                Function(
-                    name="_ready",
-                    line_number=2,
-                ),
-                Class(
-                    name="PlayerState",
-                    line_number=3,
-                ),
-            ],
-            Function,
-            [
-                Function(
-                    name="_ready",
-                    line_number=2,
-                ),
-            ],
-        ),
-        (
-            [
-                Variable(
-                    name="health",
-                    line_number=1,
-                ),
-                Function(
-                    name="_ready",
-                    line_number=2,
-                ),
-                Class(
-                    name="PlayerState",
-                    line_number=3,
-                ),
-            ],
-            Class,
-            [
-                Class(
-                    name="PlayerState",
-                    line_number=3,
-                ),
-            ],
-        ),
-        (
-            [],
-            Variable,
-            [],
-        ),
-    ],
-)
-def test_get_elements(elements, target_type, expected) -> None:
-    script = Script(path=Path("test.gd"))
-    script.elements.extend(elements)
-
-    assert script.get_elements(target_type) == expected
-
-
-@pytest.mark.parametrize(
-    "metadata,target,expected",
-    [
-        (
-            [
-                ScriptMetadata(
-                    name="class_name",
-                    value="Player",
-                    line_number=1,
-                ),
-                ScriptMetadata(
-                    name="extends",
-                    value="CharacterBody2D",
-                    line_number=2,
-                ),
-            ],
-            "class_name",
-            ScriptMetadata(
-                name="class_name",
-                value="Player",
+            "enum TestEnum { TEST_MEMBER1, TEST_MEMBER2, TEST_MEMBER3 }",
+            1,
+            Enum(
+                name="TestEnum",
+                members=[
+                    EnumMember(name="TEST_MEMBER1", value=None),
+                    EnumMember(name="TEST_MEMBER2", value=None),
+                    EnumMember(name="TEST_MEMBER3", value=None),
+                ],
                 line_number=1,
             ),
         ),
         (
-            [
-                ScriptMetadata(
-                    name="class_name",
-                    value="Player",
-                    line_number=1,
-                ),
-                ScriptMetadata(
-                    name="extends",
-                    value="CharacterBody2D",
-                    line_number=2,
-                ),
-            ],
-            "extends",
-            ScriptMetadata(
-                name="extends",
-                value="CharacterBody2D",
+            "enum TestValue { TEST_MEMBER1 = 1, TEST_MEMBER2 = 0, TEST_MEMBER3 = -1 }",
+            2,
+            Enum(
+                name="TestValue",
+                members=[
+                    EnumMember(name="TEST_MEMBER1", value="1"),
+                    EnumMember(name="TEST_MEMBER2", value="0"),
+                    EnumMember(name="TEST_MEMBER3", value="-1"),
+                ],
                 line_number=2,
             ),
         ),
         (
-            [],
-            "class_name",
+            "enum TestEmpty { }",
+            3,
+            Enum(
+                name="TestEmpty",
+                members=[],
+                line_number=3,
+            ),
+        ),
+        (
+            "enum",
+            4,
             None,
         ),
         (
-            [
-                ScriptMetadata(
-                    name="class_name",
-                    value="Player",
-                    line_number=1,
-                ),
-            ],
-            "extends",
+            "enum ",
+            5,
             None,
         ),
     ],
 )
-def test_get_metadata(metadata, target, expected) -> None:
-    script = Script(path=Path("test.gd"))
-    script.metadata.extend(metadata)
+def test_parse_enum(line: str, line_number: int, expected: Enum) -> None:
+    element = parse_enum(line, line_number)
 
-    assert script.get_metadata(target) == expected
+    assert element == expected
