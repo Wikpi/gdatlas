@@ -1,18 +1,21 @@
 from gdatlas.model.script.elements import Function
+from gdatlas.parser.godot3.script import tokens
 
 from .parameter_parser import parse_parameter
 
 
 def parse_function(line: str, line_number: int) -> Function | None:
-    is_static = False
-    if line.startswith("static "):
-        line = line.removeprefix("static ")
-        is_static = True
-
-    prefix: str = "func "
-    if not line.startswith(prefix):
+    if not line:
         return None
 
+    is_static = False
+    if line.startswith(f"{tokens.STATIC} "):
+        line = line.removeprefix(f"{tokens.STATIC} ")
+        is_static = True
+
+    prefix: str = f"{tokens.FUNCTION} "
+    if not line.startswith(prefix):
+        return None
     signature = line.removeprefix(prefix).strip()
 
     parts = signature.split("(", maxsplit=1)

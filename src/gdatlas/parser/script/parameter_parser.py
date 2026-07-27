@@ -1,12 +1,13 @@
 from gdatlas.model.script.elements import Parameter
+from gdatlas.parser.godot3.script import tokens
 
 
 def parse_parameter(parameter: str) -> Parameter | None:
     if not parameter:
         return None
 
-    if parameter.startswith("var "):
-        parameter = parameter.removeprefix("var ").strip()
+    if parameter.startswith(f"{tokens.VARIABLE} "):
+        parameter = parameter.removeprefix(f"{tokens.VARIABLE} ").strip()
 
     parts = parameter.split("=", maxsplit=1)
 

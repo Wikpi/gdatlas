@@ -1,8 +1,15 @@
 from gdatlas.model.script.elements import Enum, EnumMember
+from gdatlas.parser.godot3.script import tokens
 
 
 def parse_enum(line: str, line_number: int) -> Enum | None:
-    signature = line.removeprefix("enum ").strip()
+    if not line:
+        return None
+
+    prefix: str = f"{tokens.ENUM}"
+    if not line.startswith(prefix):
+        return None
+    signature = line.removeprefix(prefix).strip()
 
     parts = signature.split("{", maxsplit=1)
     if len(parts) < 2:

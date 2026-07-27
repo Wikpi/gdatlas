@@ -1,13 +1,16 @@
 from gdatlas.model.script.elements import Signal
+from gdatlas.parser.godot3.script import tokens
 
 from .parameter_parser import parse_parameter
 
 
 def parse_signal(line: str, line_number: int) -> Signal | None:
-    prefix: str = "signal "
-    if not line.startswith(prefix):
+    if not line:
         return None
 
+    prefix: str = f"{tokens.SIGNAL} "
+    if not line.startswith(prefix):
+        return None
     signature = line.removeprefix(prefix).strip()
 
     parts = signature.split("(", maxsplit=1)
