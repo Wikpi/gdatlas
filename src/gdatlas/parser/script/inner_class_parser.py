@@ -1,14 +1,17 @@
 from gdatlas.model.script.elements import Class
+from gdatlas.parser.godot3.script import tokens
 
 
 def parse_inner_class(line: str, line_number: int) -> Class | None:
-    prefix: str = "class "
-    if not line.startswith(prefix):
+    if not line:
         return None
 
+    prefix: str = f"{tokens.CLASS} "
+    if not line.startswith(prefix):
+        return None
     signature = line.removeprefix(prefix).removesuffix(":").strip()
 
-    parts = signature.split(" extends ", maxsplit=1)
+    parts = signature.split(f" {tokens.EXTENDS} ", maxsplit=1)
 
     inherits = None
     if len(parts) >= 2:

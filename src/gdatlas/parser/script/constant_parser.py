@@ -1,11 +1,14 @@
 from gdatlas.model.script.elements import Constant
+from gdatlas.parser.godot3.script import tokens
 
 
 def parse_constant(line: str, line_number: int) -> Constant | None:
-    prefix: str = "const "
-    if not line.startswith(prefix):
+    if not line:
         return None
 
+    prefix: str = f"{tokens.CONSTANT} "
+    if not line.startswith(prefix):
+        return None
     signature = line.removeprefix(prefix).strip()
 
     parts = signature.split("=", maxsplit=1)
