@@ -1,6 +1,7 @@
 from .class_name_parser import parse_class_name as parse_class_name
 from .constant_parser import parse_constant as parse_constant
 from .enum_parser import parse_enum as parse_enum
+from .expression_parse import parse_expression as parse_expression
 from .extends_parser import parse_extends as parse_extends
 from .function_parser import parse_function as parse_function
 from .inner_class_parser import parse_inner_class as parse_inner_class

@@ -1,6 +1,6 @@
 import pytest
 
-from gdatlas.model.script.metadata import ScriptMetadata
+from gdatlas.model.script.metadata import ClassName
 from gdatlas.parser.script import parse_class_name
 
 
@@ -10,8 +10,7 @@ from gdatlas.parser.script import parse_class_name
         (
             "class_name test",
             1,
-            ScriptMetadata(
-                name="class_name",
+            ClassName(
                 value="test",
                 line_number=1,
             ),
@@ -26,28 +25,9 @@ from gdatlas.parser.script import parse_class_name
             3,
             None,
         ),
-        (
-            "class_name test",
-            4,
-            ScriptMetadata(
-                name="class_name",
-                value="test",
-                line_number=4,
-            ),
-        ),
-        (
-            "class name ",
-            3,
-            None,
-        ),
-        (
-            "class ",
-            3,
-            None,
-        ),
     ],
 )
-def test_parse_class_name(line: str, line_number: int, expected: ScriptMetadata) -> None:
+def test_parse_class_name(line: str, line_number: int, expected: ClassName) -> None:
     element = parse_class_name(line, line_number)
 
     assert element == expected

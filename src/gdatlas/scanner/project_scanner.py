@@ -24,7 +24,14 @@ def scan_project(project_path: Path) -> Project:
         script_path: Path = file.resolve()
 
         if is_script(file):
-            scripts.append(Script(path=script_path))
+            scripts.append(
+                Script(
+                    path=script_path,
+                    metadata=[],
+                    elements=[],
+                    dependencies=[],
+                )
+            )
 
         elif is_scene(file):
             scenes.append(Scene(path=script_path))

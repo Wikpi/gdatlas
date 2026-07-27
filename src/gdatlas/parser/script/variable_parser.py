@@ -1,6 +1,8 @@
 from gdatlas.model.script.elements import Variable
 from gdatlas.parser.godot3.script import tokens
 
+from .expression_parse import parse_expression
+
 
 def parse_variable(line: str, line_number: int) -> Variable | None:
     if not line:
@@ -17,7 +19,9 @@ def parse_variable(line: str, line_number: int) -> Variable | None:
 
     value = None
     if len(parts) >= 2:
-        value = parts[1].strip()
+        value = parse_expression(parts[1].strip(), line_number)
+        if not value:
+            value = parts[1].strip()
 
     parts = parts[0].split(":", maxsplit=1)
 

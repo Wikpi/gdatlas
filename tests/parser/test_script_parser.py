@@ -20,11 +20,7 @@ from gdatlas.parser.common import ParseContext
     ],
 )
 def test_parse_script(
-    godot3_dir: Path,
-    project_name: str,
-    script_path: str,
-    expected_functions: int,
-    expected_variables: int,
+    godot3_dir: Path, project_name: str, script_path: str, expected_functions: int, expected_variables: int
 ) -> None:
     script = Script(path=godot3_dir / project_name / script_path)
     ctx = ParseContext(godot_version="3")

@@ -1,6 +1,7 @@
 import pytest
 
 from gdatlas.model.script.elements import Class
+from gdatlas.model.script.metadata import Extends
 from gdatlas.parser.script import parse_inner_class
 
 
@@ -12,7 +13,8 @@ from gdatlas.parser.script import parse_inner_class
             1,
             Class(
                 name="TestClass",
-                inherits=None,
+                metadata=[],
+                elements=[],
                 line_number=1,
             ),
         ),
@@ -21,7 +23,13 @@ from gdatlas.parser.script import parse_inner_class
             2,
             Class(
                 name="TestExtend",
-                inherits="TestClass",
+                metadata=[
+                    Extends(
+                        value="TestClass",
+                        line_number=2,
+                    ),
+                ],
+                elements=[],
                 line_number=2,
             ),
         ),
