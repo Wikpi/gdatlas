@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from gdatlas.model.script import Script
-from gdatlas.model.script.elements import Class, Function, Variable
+from gdatlas.model.script.elements import Function, Variable
 from gdatlas.model.script.metadata import ScriptMetadata
 
 
@@ -11,18 +11,15 @@ from gdatlas.model.script.metadata import ScriptMetadata
     "elements, target_type, expected",
     [
         (
+            [],
+            Variable,
+            [],
+        ),
+        (
             [
                 Variable(
                     name="health",
                     line_number=1,
-                ),
-                Function(
-                    name="_ready",
-                    line_number=2,
-                ),
-                Class(
-                    name="PlayerState",
-                    line_number=3,
                 ),
             ],
             Variable,
@@ -40,18 +37,14 @@ from gdatlas.model.script.metadata import ScriptMetadata
                     line_number=1,
                 ),
                 Function(
-                    name="_ready",
+                    name="ready",
                     line_number=2,
-                ),
-                Class(
-                    name="PlayerState",
-                    line_number=3,
                 ),
             ],
             Function,
             [
                 Function(
-                    name="_ready",
+                    name="ready",
                     line_number=2,
                 ),
             ],
@@ -62,51 +55,33 @@ from gdatlas.model.script.metadata import ScriptMetadata
                     name="health",
                     line_number=1,
                 ),
-                Function(
-                    name="_ready",
-                    line_number=2,
-                ),
-                Class(
-                    name="PlayerState",
-                    line_number=3,
-                ),
             ],
-            Class,
-            [
-                Class(
-                    name="PlayerState",
-                    line_number=3,
-                ),
-            ],
-        ),
-        (
-            [],
-            Variable,
+            Function,
             [],
         ),
     ],
 )
-def test_get_elements(elements, target_type, expected) -> None:
-    script = Script(path=Path("test.gd"))
+def test_get_elements(elements: list, target_type: type, expected: list) -> None:
+    script = Script(path=Path("player.gd"))
     script.elements.extend(elements)
 
     assert script.get_elements(target_type) == expected
 
 
 @pytest.mark.parametrize(
-    "metadata,target,expected",
+    "metadata, target, expected",
     [
+        (
+            [],
+            "class_name",
+            None,
+        ),
         (
             [
                 ScriptMetadata(
                     name="class_name",
                     value="Player",
                     line_number=1,
-                ),
-                ScriptMetadata(
-                    name="extends",
-                    value="CharacterBody2D",
-                    line_number=2,
                 ),
             ],
             "class_name",
@@ -123,22 +98,8 @@ def test_get_elements(elements, target_type, expected) -> None:
                     value="Player",
                     line_number=1,
                 ),
-                ScriptMetadata(
-                    name="extends",
-                    value="CharacterBody2D",
-                    line_number=2,
-                ),
             ],
             "extends",
-            ScriptMetadata(
-                name="extends",
-                value="CharacterBody2D",
-                line_number=2,
-            ),
-        ),
-        (
-            [],
-            "class_name",
             None,
         ),
         (
@@ -148,14 +109,29 @@ def test_get_elements(elements, target_type, expected) -> None:
                     value="Player",
                     line_number=1,
                 ),
+                ScriptMetadata(
+                    name="extends",
+                    value="Node2D",
+                    line_number=2,
+                ),
             ],
             "extends",
-            None,
+            ScriptMetadata(
+                name="extends",
+                value="Node2D",
+                line_number=2,
+            ),
         ),
     ],
 )
-def test_get_metadata(metadata, target, expected) -> None:
-    script = Script(path=Path("test.gd"))
+def test_get_metadata(
+    metadata: list[ScriptMetadata],
+    target: str,
+    expected: ScriptMetadata | None,
+) -> None:
+    script = Script(path=Path("player.gd"))
     script.metadata.extend(metadata)
 
-    assert script.get_metadata(target) == expected
+    result = script.get_metadata(target)
+
+    assert result == expected
