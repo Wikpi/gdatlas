@@ -2,7 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from gdatlas.model import Project, Script
+from gdatlas.model import Project
+from gdatlas.model.script import Script
 from gdatlas.model.script.metadata import ClassName
 
 

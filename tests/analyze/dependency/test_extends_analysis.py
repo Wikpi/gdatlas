@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from gdatlas.analyze.common import AnalyzeContext
-from gdatlas.analyze.dependency import analyze_extends
+from gdatlas.analyze.script.dependency import analyze_extends
 from gdatlas.model import Project
 from gdatlas.model.dependency import Dependency
 from gdatlas.model.script import Script

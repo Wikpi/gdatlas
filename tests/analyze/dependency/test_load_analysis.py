@@ -3,11 +3,11 @@ from pathlib import Path
 import pytest
 
 from gdatlas.analyze.common import AnalyzeContext
-from gdatlas.analyze.dependency import analyze_load
+from gdatlas.analyze.script.dependency import analyze_load
 from gdatlas.model import Project
 from gdatlas.model.dependency import Dependency
 from gdatlas.model.script import Script
-from gdatlas.model.script.expressions import Load
+from gdatlas.model.script.expression import Load
 
 
 @pytest.fixture

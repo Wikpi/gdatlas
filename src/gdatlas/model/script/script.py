@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import TypeVar
 
 from gdatlas.model.dependency import Dependency
-from gdatlas.model.script.elements import ScriptElement
+from gdatlas.model.script.element import ScriptElement
 from gdatlas.model.script.metadata import ScriptMetadata
 
 ScriptElementType = TypeVar(

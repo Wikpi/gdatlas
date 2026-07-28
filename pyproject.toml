@@ -34,7 +34,7 @@ Homepage = "https://github.com/Wikpi/gdatlas"
 Issues = "https://github.com/Wikpi/gdatlas/issues"
 
 [tool.ruff]
-line-length = 120
+line-length = 140
 
 [tool.ruff.format]
 quote-style = "double"
