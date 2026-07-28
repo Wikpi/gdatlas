@@ -124,11 +124,7 @@ def test_get_elements(elements: list, target_type: type, expected: list) -> None
         ),
     ],
 )
-def test_get_metadata(
-    metadata: list[ScriptMetadata],
-    target: str,
-    expected: ScriptMetadata | None,
-) -> None:
+def test_get_metadata(metadata: list[ScriptMetadata], target: str, expected: ScriptMetadata | None) -> None:
     script = Script(path=Path("player.gd"))
     script.metadata.extend(metadata)
 

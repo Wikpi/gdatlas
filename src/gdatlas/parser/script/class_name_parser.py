@@ -1,8 +1,8 @@
-from gdatlas.model.script.metadata import ScriptMetadata
+from gdatlas.model.script.metadata import ClassName
 from gdatlas.parser.godot3.script import tokens
 
 
-def parse_class_name(line: str, line_number: int) -> ScriptMetadata | None:
+def parse_class_name(line: str, line_number: int) -> ClassName | None:
     if not line:
         return None
 
@@ -15,8 +15,7 @@ def parse_class_name(line: str, line_number: int) -> ScriptMetadata | None:
     if not value:
         return None
 
-    return ScriptMetadata(
-        name=tokens.CLASS_NAME,
+    return ClassName(
         value=value,
         line_number=line_number,
     )

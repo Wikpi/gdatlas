@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TypeVar
 
+from gdatlas.model.dependency import Dependency
 from gdatlas.model.script.elements import ScriptElement
 from gdatlas.model.script.metadata import ScriptMetadata
 
@@ -15,8 +16,10 @@ ScriptElementType = TypeVar(
 class Script:
     path: Path
 
-    metadata: list[ScriptMetadata] = field(default_factory=list, init=False)
-    elements: list[ScriptElement] = field(default_factory=list, init=False)
+    metadata: list[ScriptMetadata] = field(default_factory=list)
+    elements: list[ScriptElement] = field(default_factory=list)
+
+    dependencies: list[Dependency] = field(default_factory=list)
 
     def get_elements(self, target_type: type[ScriptElementType]) -> list[ScriptElementType]:
         target_elements: list[ScriptElementType] = []

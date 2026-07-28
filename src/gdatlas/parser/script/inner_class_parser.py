@@ -1,4 +1,5 @@
 from gdatlas.model.script.elements import Class
+from gdatlas.model.script.metadata import Extends
 from gdatlas.parser.godot3.script import tokens
 
 
@@ -13,11 +14,18 @@ def parse_inner_class(line: str, line_number: int) -> Class | None:
 
     parts = signature.split(f" {tokens.EXTENDS} ", maxsplit=1)
 
-    inherits = None
+    metadata = []
     if len(parts) >= 2:
-        inherits = parts[1].strip()
-        if not inherits:
+        value = parts[1].strip()
+        if not value:
             return None
+
+        metadata.append(
+            Extends(
+                value=value,
+                line_number=line_number,
+            )
+        )
 
     name = parts[0].strip()
     if not name:
@@ -25,6 +33,7 @@ def parse_inner_class(line: str, line_number: int) -> Class | None:
 
     return Class(
         name=name,
-        inherits=inherits,
+        metadata=metadata,
+        elements=[],
         line_number=line_number,
     )

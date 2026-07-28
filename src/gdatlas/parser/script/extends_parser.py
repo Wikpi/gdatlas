@@ -1,8 +1,8 @@
-from gdatlas.model.script.metadata import ScriptMetadata
+from gdatlas.model.script.metadata import Extends
 from gdatlas.parser.godot3.script import tokens
 
 
-def parse_extends(line: str, line_number: int) -> ScriptMetadata | None:
+def parse_extends(line: str, line_number: int) -> Extends | None:
     if not line:
         return None
 
@@ -15,8 +15,7 @@ def parse_extends(line: str, line_number: int) -> ScriptMetadata | None:
     if not value:
         return None
 
-    return ScriptMetadata(
-        name="extends",
+    return Extends(
         value=value,
         line_number=line_number,
     )

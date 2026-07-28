@@ -1,8 +1,8 @@
-from gdatlas.model.script.metadata import ScriptMetadata
+from gdatlas.model.script.metadata import Tool
 from gdatlas.parser.godot3.script import tokens
 
 
-def parse_tool(line: str, line_number: int) -> ScriptMetadata | None:
+def parse_tool(line: str, line_number: int) -> Tool | None:
     if not line:
         return None
 
@@ -10,7 +10,6 @@ def parse_tool(line: str, line_number: int) -> ScriptMetadata | None:
     if not line.startswith(prefix):
         return None
 
-    return ScriptMetadata(
-        name=tokens.TOOL,
+    return Tool(
         line_number=line_number,
     )

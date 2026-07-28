@@ -1,14 +1,7 @@
 import sys
 from pathlib import Path
 
-from gdatlas.model import Script
-from gdatlas.model.script.elements import (
-    Class,
-    Function,
-    ScriptElement,
-    Signal,
-    Variable,
-)
+from gdatlas.analyze import analyze_project
 from gdatlas.parser import parse_project
 from gdatlas.scanner import scan_project
 
@@ -19,39 +12,22 @@ def main() -> None:
     print("===================== Scanning Project ============================")
     project = scan_project(project_path)
 
-    print(f"Project path: {project.path}")
-    print(f"Scripts: {len(project.scripts)}")
     print(f"Scenes: {len(project.scenes)}")
+    print(f"Scripts: {len(project.scripts)}")
 
     print("===================== Parsing Project (scripts) ============================")
-    parse_project(project)
+    project = parse_project(project)
+
+    print("===================== Analyze Project (dependencies) ============================")
+    project = analyze_project(project)
 
     for script in project.scripts:
-        print_script(script)
+        print(f"Script: {script.path}")
+        print(f" - Dependencies: {len(script.dependencies)}")
 
-
-def print_script(script: Script) -> None:
-    print()
-    print(f"Script: {script.path}")
-
-    print_elements(script.elements, indent=" - ")
-
-
-def print_elements(elements: list[ScriptElement], indent: str = "") -> None:
-    for element in elements:
-        match element:
-            case Function():
-                print(f"{indent}Function: {element.name}")
-
-            case Variable():
-                print(f"{indent}Variable: {element.name}")
-
-            case Signal():
-                print(f"{indent}Signal: {element.name}")
-
-            case Class():
-                print(f"{indent}Class: {element.name}")
-                print_elements(element.elements, indent + " - ")
+        for dependency in script.dependencies:
+            print(f" - - Target: {dependency.target}")
+            print(f" - - Source: {dependency.source}")
 
 
 if __name__ == "__main__":
