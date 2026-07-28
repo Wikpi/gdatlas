@@ -1,7 +1,7 @@
+from gdatlas.analyze.script import analyze_script
 from gdatlas.model import Project
 
 from .common import AnalyzeContext
-from .script_analysis import analyze_script
 
 
 def analyze_project(project: Project) -> Project:

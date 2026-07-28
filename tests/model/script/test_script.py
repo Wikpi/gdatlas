@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from gdatlas.model.script import Script
-from gdatlas.model.script.elements import Function, Variable
+from gdatlas.model.script.element import Function, Variable
 from gdatlas.model.script.metadata import ScriptMetadata
 
 
