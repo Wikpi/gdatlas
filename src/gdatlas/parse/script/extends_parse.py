@@ -11,7 +11,7 @@ def parse_extends(line: str, line_number: int) -> Extends | None:
         return None
     signature = line.removeprefix(prefix).strip()
 
-    value = signature.strip()
+    value = signature.strip().strip("\"'")
     if not value:
         return None
 

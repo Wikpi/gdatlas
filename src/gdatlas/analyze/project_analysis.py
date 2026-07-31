@@ -1,4 +1,5 @@
-from gdatlas.analyze.script import analyze_script
+from gdatlas.analyze.dependency import analyze_dependency
+from gdatlas.analyze.directory import analyze_directory
 from gdatlas.model import Project
 
 from .common import AnalyzeContext
@@ -10,7 +11,7 @@ def analyze_project(project: Project) -> Project:
 
     ctx = AnalyzeContext(project=project)
 
-    for script in project.scripts:
-        analyze_script(ctx, script)
+    analyze_dependency(ctx)
+    analyze_directory(ctx)
 
     return project

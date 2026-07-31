@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from .directory import Directory
 from .scene import Scene
 from .script import Script
 
@@ -13,6 +14,8 @@ class Project:
 
     scripts: list[Script] = field(default_factory=list)
     scenes: list[Scene] = field(default_factory=list)
+
+    directory_tree: Directory | None = None
 
     def find_script_by_path(self, path: Path) -> Script | None:
         for script in self.scripts:

@@ -7,9 +7,10 @@ from gdatlas.model.script.metadata import Extends
 from .dispatch import ANALYZER_RULES
 
 
-def analyze_dependencies(ctx: AnalyzeContext, script: Script) -> None:
-    _analyze_expressions(ctx, script)
-    _analyze_metadata(ctx, script)
+def analyze_dependency(ctx: AnalyzeContext) -> None:
+    for script in ctx.project.scripts:
+        _analyze_expressions(ctx, script)
+        _analyze_metadata(ctx, script)
 
 
 def _analyze_expressions(ctx: AnalyzeContext, script: Script) -> None:

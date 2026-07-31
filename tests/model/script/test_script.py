@@ -4,7 +4,7 @@ import pytest
 
 from gdatlas.model.script import Script
 from gdatlas.model.script.element import Function, Variable
-from gdatlas.model.script.metadata import ScriptMetadata
+from gdatlas.model.script.metadata import ClassName, Extends, ScriptMetadata
 
 
 @pytest.mark.parametrize(
@@ -78,23 +78,20 @@ def test_get_elements(elements: list, target_type: type, expected: list) -> None
         ),
         (
             [
-                ScriptMetadata(
-                    name="class_name",
+                ClassName(
                     value="test",
                     line_number=1,
                 ),
             ],
             "class_name",
-            ScriptMetadata(
-                name="class_name",
+            ClassName(
                 value="test",
                 line_number=1,
             ),
         ),
         (
             [
-                ScriptMetadata(
-                    name="class_name",
+                ClassName(
                     value="test",
                     line_number=1,
                 ),
@@ -104,20 +101,17 @@ def test_get_elements(elements: list, target_type: type, expected: list) -> None
         ),
         (
             [
-                ScriptMetadata(
-                    name="class_name",
+                ClassName(
                     value="test",
                     line_number=1,
                 ),
-                ScriptMetadata(
-                    name="extends",
+                Extends(
                     value="Node2D",
                     line_number=2,
                 ),
             ],
             "extends",
-            ScriptMetadata(
-                name="extends",
+            Extends(
                 value="Node2D",
                 line_number=2,
             ),

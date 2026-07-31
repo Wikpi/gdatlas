@@ -28,7 +28,7 @@ def _parse_load(value: str, line_number: int) -> Load | None:
     if not signature:
         return None
 
-    path = signature.removeprefix("(").removesuffix(")").strip()
+    path = signature.removeprefix("(").removesuffix(")").strip().strip("\"'")
     if not path:
         return None
 
@@ -50,7 +50,7 @@ def _parse_preload(value: str, line_number: int) -> Preload | None:
     if not signature:
         return None
 
-    path = signature.removeprefix("(").removesuffix(")").strip()
+    path = signature.removeprefix("(").removesuffix(")").strip().strip("\"'")
     if not path:
         return None
 

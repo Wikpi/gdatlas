@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 
 from gdatlas.analyze import analyze_project
+from gdatlas.export import export_project
 from gdatlas.parse import parse_project
 from gdatlas.scan import scan_project
 
@@ -21,13 +22,8 @@ def main() -> None:
     print("===================== Analyze Project (dependencies) ============================")
     project = analyze_project(project)
 
-    for script in project.scripts:
-        print(f"Script: {script.path}")
-        print(f" - Dependencies: {len(script.dependencies)}")
-
-        for dependency in script.dependencies:
-            print(f" - - Target: {dependency.target}")
-            print(f" - - Source: {dependency.source}")
+    print("===================== Reporting Project (dependency graph) ============================")
+    project = export_project(project)
 
 
 if __name__ == "__main__":

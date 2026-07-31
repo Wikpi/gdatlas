@@ -7,3 +7,4 @@ from .script_expression import ScriptExpression
 @dataclass(slots=True)
 class Preload(ScriptExpression):
     path: Path
+    name = "preload"
