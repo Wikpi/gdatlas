@@ -11,7 +11,7 @@ from gdatlas.parse.script import parse_expression
             "load('res://Test.gd')",
             1,
             Load(
-                path="'res://Test.gd'",
+                path="res://Test.gd",
                 line_number=1,
             ),
             id="parse-load-expression",
@@ -20,7 +20,7 @@ from gdatlas.parse.script import parse_expression
             "preload('res://Test.gd')",
             2,
             Preload(
-                path="'res://Test.gd'",
+                path="res://Test.gd",
                 line_number=2,
             ),
             id="parse-preload-expression",

@@ -19,7 +19,7 @@ from gdatlas.parse.script import parse_extends
             "extends 'project/test/directory/test.gd'",
             2,
             Extends(
-                value="'project/test/directory/test.gd'",
+                value="project/test/directory/test.gd",
                 line_number=2,
             ),
         ),

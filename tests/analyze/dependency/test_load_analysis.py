@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from gdatlas.analyze.common import AnalyzeContext
-from gdatlas.analyze.script.dependency import analyze_load
+from gdatlas.analyze.dependency import analyze_load
 from gdatlas.model import Project
 from gdatlas.model.dependency import Dependency
 from gdatlas.model.script import Script
@@ -14,7 +14,7 @@ from gdatlas.model.script.expression import Load
 def ctx() -> AnalyzeContext:
     return AnalyzeContext(
         project=Project(
-            path=".",
+            path=Path("."),
             godot_version="3",
             scripts=[],
             scenes=[],
@@ -47,7 +47,7 @@ def ctx() -> AnalyzeContext:
             ),
             [
                 Script(
-                    Path("res://Test.gd"),
+                    Path("Test.gd"),
                     elements=[],
                     metadata=[],
                     dependencies=[],
@@ -55,7 +55,7 @@ def ctx() -> AnalyzeContext:
             ],
             Dependency(
                 target=Script(
-                    Path("res://Test.gd"),
+                    Path("Test.gd"),
                     elements=[],
                     metadata=[],
                     dependencies=[],
@@ -74,13 +74,13 @@ def ctx() -> AnalyzeContext:
             ),
             [
                 Script(
-                    Path("res://TestA.gd"),
+                    Path("TestA.gd"),
                     elements=[],
                     metadata=[],
                     dependencies=[],
                 ),
                 Script(
-                    Path("res://TestB.gd"),
+                    Path("TestB.gd"),
                     elements=[],
                     metadata=[],
                     dependencies=[],

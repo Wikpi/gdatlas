@@ -14,6 +14,8 @@ def scan_project(project_path: Path) -> Project:
     if not is_valid_project(project_path):
         raise ValueError(f"Invalid Godot project path: {project_path}")
 
+    project_path = project_path.resolve()
+
     scripts: list[Script] = []
     scenes: list[Scene] = []
 
@@ -31,14 +33,23 @@ def scan_project(project_path: Path) -> Project:
                     metadata=[],
                     elements=[],
                     dependencies=[],
-                )
+                ),
             )
 
         elif is_scene(file):
-            scenes.append(Scene(path=script_path))
+            scenes.append(
+                Scene(
+                    path=script_path,
+                ),
+            )
 
     # TODO: remove hardcoded version.
-    return Project(path=project_path, godot_version="3", scripts=scripts, scenes=scenes)
+    return Project(
+        path=project_path,
+        godot_version="3",
+        scripts=scripts,
+        scenes=scenes,
+    )
 
 
 def is_ignored_file(path: Path) -> bool:
