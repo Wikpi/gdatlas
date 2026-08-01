@@ -27,7 +27,7 @@ dev = [
 ]
 
 [project.scripts]
-gdatlas = "gdatlas.__main__:main"
+gdatlas = "gdatlas.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/Wikpi/gdatlas"
