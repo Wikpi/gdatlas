@@ -10,7 +10,9 @@ IGNORED_DIRECTORIES = {
 }
 
 
-def scan_project(project_path: Path) -> Project:
+def scan_project(project_path: str) -> Project:
+    project_path = Path(project_path)
+
     if not is_valid_project(project_path):
         raise ValueError(f"Invalid Godot project path: {project_path}")
 
